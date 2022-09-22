@@ -49,5 +49,5 @@ mongoose.connect(process.env.DB_CONNECTION)
 //listen server
 const port   = 4001
 app.listen(port,()=>{
-    console.log(`server is listening at port ${port}`)
+    console.log(`server is listeningg at port ${port}`)
 })
