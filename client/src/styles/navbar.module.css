@@ -1,0 +1,100 @@
+.container{
+    background-color: black;
+   
+    width: 100%;
+}
+
+.wrapper{
+    width: 80%;
+    margin: auto;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+   
+}
+nav ul li a{
+   color: white;
+   font-weight: 600;
+   display: inline-block;
+   font-size: 1.5rem;
+}
+
+nav ul li{
+    list-style: none;
+    padding: 1.5rem 4%;
+
+}
+nav ul li:hover{
+    background-color: #e7ab3c
+}
+nav ul li:first-child:hover{
+    background-color: black
+}
+nav ul li:hover a{
+    color: white;
+   
+}
+.dropDown{
+    display: none;
+}
+nav ul li:hover .dropDown{
+    display: block !important;
+}
+
+
+.menu{
+     display: block;
+    padding: 1rem ;
+    font-size: 1.2rem;
+    
+}
+.subItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+.subItem:hover{
+    background-color: rgb(251, 252, 253);
+    box-shadow: .1rem .1rem 1.5rem rgb(215, 209, 209);
+}
+
+
+/* sub menue style */
+.sub_menu{
+    position: absolute;
+    left: 100%;
+    background-color: white;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    margin-top: -3rem;
+}
+.sub_menu a{
+  padding: 1rem 2rem;
+ 
+   
+}
+
+.sub_menu a:hover{
+    background-color: rgb(198, 192, 192);
+}
+
+.electronic:hover .sub_menu{
+    visibility: visible;
+}
+
+
+
+
+/* =======
+responsive
+======== */
+
+@media only screen and (max-width:900px){
+  
+}

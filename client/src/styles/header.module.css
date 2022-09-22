@@ -1,0 +1,40 @@
+.wrapper{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+ 
+    align-items: center;
+}
+.container{
+   padding: 2rem 0;
+}
+.center input{
+    border: none;
+    height: 3.5rem;
+  
+   
+}
+.center input:focus{
+    outline: none;
+   
+}
+.left{
+  flex: 20%;
+}
+.center{
+  flex: 60%;
+ 
+
+}
+
+.right{
+    flex: 20%;
+   
+}
+
+/* ======
+responsive
+======= */
+
+ 
