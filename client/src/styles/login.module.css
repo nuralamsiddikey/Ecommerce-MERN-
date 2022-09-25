@@ -10,5 +10,6 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    
+    padding: 2rem;
+     margin-top:5rem
 }
