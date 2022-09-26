@@ -5,6 +5,7 @@ import WomenHome from '../components/WomenHome';
 import Footer from '../components/Footer';
 
 const Home = () => {
+ 
   return (
     <div>
         <HomeSlider/>

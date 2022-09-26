@@ -1,15 +1,19 @@
-.wrapper{
+.body{
     min-height: 70vh;
     background-color: aliceblue;
    
 }
-.form{
+.wrapper{
     height: 50vh;
     width: 35%;
     margin: auto;
     background-color: white;
-    display: flex;
-    flex-direction: column;
+ 
     padding: 2rem;
      margin-top:5rem
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
 }
