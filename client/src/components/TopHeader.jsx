@@ -10,11 +10,16 @@ import { fontSize } from '@mui/system';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
+import UserOptions from './UserOptions';
 
 
 
 const TopHeader = () => {
+
+const jwt_token = localStorage.getItem('token')
+
+
   return (
     <div className={styles.container} >
       <div className={styles.wrapper}>
@@ -55,7 +60,7 @@ const TopHeader = () => {
                 <PinterestIcon sx={{fontSize:'2rem',marginRight:'1rem'}} />
             </div>
 
-            <Link to="login" className="login" style={{borderRight:'1px solid gray',padding:'0 1rem'}}>
+           {!jwt_token && <Link to="login" className="login" style={{borderRight:'1px solid gray',padding:'0 1rem'}}>
                   <Button 
                       variant="text"
                       style={{
@@ -66,8 +71,9 @@ const TopHeader = () => {
                      ><LoginIcon style={{marginRight:'.8rem'}}/>Login
                   </Button>
             </Link>
+         }
 
-            <Link to="signup" className="register">
+         { !jwt_token  && <Link to="signup" className="register">
                <Button 
                     variant="text"
                     style={{
@@ -77,7 +83,10 @@ const TopHeader = () => {
                     ><AccountCircleOutlinedIcon style={{marginRight:'.8rem'}}/> Signup
                </Button>
             </Link>
-
+         }
+           {
+              jwt_token  &&  <UserOptions/>
+           }
 
         </div>
       </div>

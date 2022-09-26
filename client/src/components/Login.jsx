@@ -35,6 +35,7 @@ const handleInput = ()=>{
             if(data.error === false){
 
                 localStorage.setItem('token',data.token)
+                window.location.reload('http://localhost:3000/')
                 toast.success("Login success!", {
                    position: toast.POSITION.TOP_CENTER
               });
