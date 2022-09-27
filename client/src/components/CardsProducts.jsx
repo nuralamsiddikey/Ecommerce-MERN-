@@ -5,7 +5,7 @@ const CardsProducts = (props) => {
   return (
     <div >
       <div class="ui link cards">
-        <div class="card" style={{ width: '24rem' , backgroundColor:'rgb(240, 240, 238)'}}>
+        <div class="card" style={{ width: '24rem' ,boxShadow:'none'}}>
           <div class="image">
                   <img src= {`http://localhost:4001/${product.image}`}  alt="" />
           </div>
