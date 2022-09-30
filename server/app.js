@@ -32,13 +32,15 @@ dotenv.config()
 const userController            = require('./controllers/user/index')
 const productCategoryController = require('./controllers/productCategory/index.js')
 const productController         = require('./controllers/product/index')
-
+const orderController           = require('./controllers/order/index')
+const cartController            = require('./controllers/cart/index')
 
 //USE CONTROLLERS
 app.use('/api/user',userController)
 app.use('/api/productCategory',productCategoryController)
 app.use('/api/product', productController)
-
+app.use('/api/order',orderController)
+app.use('/api/cart',cartController)
 
 //database connection
 mongoose.connect(process.env.DB_CONNECTION)

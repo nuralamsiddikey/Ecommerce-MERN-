@@ -17,7 +17,9 @@ const ProductList = () => {
        .then(res=>res.json())
        .then(data=>{
           setProducts(data.data)
+          window.scrollTo(0, 0)
        })
+      
   },[])
 
 let allBrand = products.map(product=>product.brand)

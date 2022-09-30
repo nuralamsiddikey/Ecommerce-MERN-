@@ -16,18 +16,22 @@ const orderSchema = Schema({
             },
         },
     ],
-    amount: {
-        type: Number,
-        required: true,
-    },
-    address: {
-        type: Object,
-        required: true,
-    },
+
+    address: [
+        {
+            phone: {
+                type: String,
+                required: true
+            },
+            location: {
+               type: String
+            }
+        }
+    ],
     status: {
         type: String,
         default: "pending",
     },
-},{timestamps: true});
+}, { timestamps: true });
 
-module.exports  = mongoose.model('Order',orderSchema)
+module.exports = mongoose.model('Order', orderSchema)

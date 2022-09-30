@@ -17,11 +17,11 @@ import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ProductDetails from "./components/ProductDetails";
+
 
 function App() {
-  
   return (
-
 <BrowserRouter>
     <div>
           <TopHeader/>
@@ -34,13 +34,12 @@ function App() {
         <Route path="/productList" element={<ProductList/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route  path="/productDetail" element={<ProductDetails/>}/>
     </Routes>
 
     <Footer/> 
     <ToastContainer />
   </BrowserRouter>
-
-   
 
   );
 }

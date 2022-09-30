@@ -1,0 +1,50 @@
+.container{
+    min-height: 100vh;  
+    width: 90%;
+    margin: auto;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.left{
+    flex: 2;
+}
+.center{
+    flex:3
+}
+.right{
+    flex: 1;
+}
+.left img{
+    height: 45rem;
+    width: 40rem;
+}
+
+.shop_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3rem;
+   
+}
+
+.cart{
+    background-color: #9b59b6;
+    width: 20rem;
+    text-align: center;
+    margin-right: 2rem;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+}
+.buy{
+    background-color: #2ecc71;
+    width: 20rem;
+    text-align: center;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+}

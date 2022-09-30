@@ -1,11 +1,19 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+
+
 
 const CardsProducts = (props) => {
     const product = props.data
+    const navigate = useNavigate()
+    
   return (
     <div >
       <div class="ui link cards">
-        <div class="card" style={{ width: '24rem' ,boxShadow:'none'}}>
+        <div class="card" onClick={()=>navigate(`/productDetail?id=${product._id}`)} style={{ width: '24rem' ,boxShadow:'none'}}>
           <div class="image">
                   <img src= {`http://localhost:4001/${product.image}`}  alt="" />
           </div>
@@ -20,14 +28,7 @@ const CardsProducts = (props) => {
             </div>
           </div>
           <div class="extra content">
-            <span class="right floated">
-            <button class="big ui  orange button" style={{width:'10rem'}}>Buy</button>
-            <button class="big ui black button" style={{width:'10rem'}}>Add Cart</button>
-
-            </span>
-            <span>
-              
-            </span>
+           
           </div>
         </div>
 
