@@ -3,6 +3,7 @@ const cartModel = require('../../models/Cart')
 const {userVerify} = require('../../middlewares/verifyToken')
 
 
+//create product to cart
 router.post('/add',userVerify,async(req,res)=>{
       try{
              const  userId  = req.user.user._id
@@ -12,8 +13,8 @@ router.post('/add',userVerify,async(req,res)=>{
              if(existUser){
                    const existProduct = existUser.productId
                    const existProductId = await existProduct.indexOf(productId)
-                   
-                   if(existProductId == 0){
+                 
+                   if(existProductId != -1){
                         res.status(409).json({
                                 message: 'this product already added to cart',
                                 error: true
@@ -50,5 +51,28 @@ router.post('/add',userVerify,async(req,res)=>{
          console.log(err)
       }
 })
+
+ 
+//get product from cart
+router.get('/get',userVerify,async(req,res)=>{
+     try{
+           console.log('hello')
+           const userId = req.user.user._id
+           const cart = await cartModel.find({userId})
+           res.status(200).json({
+                message:'Showing results',
+                length: cart[0].productId.length,
+                data: cart,
+                error: false
+           })
+     }
+     catch(err){
+          console.log(err)
+     }
+})
+
+
+
+
 
 module.exports = router

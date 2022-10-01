@@ -4,7 +4,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-
+import TemporaryDrawer from '../modal/CartSidebar';
 
 const Header = () => {
   return (
@@ -48,18 +48,14 @@ const Header = () => {
 
         <div className={styles.right}>
             <div style={{display:'flex',width:'40%',marginLeft:'60%'}}>
-                <Badge color="secondary" badgeContent={1000} max={9}>
-                  <FavoriteBorderIcon style={{fontSize:'3rem'}}/>
-                </Badge>
-
-                <Badge color="secondary" badgeContent={1000} max={9} style={{marginLeft:'3rem'}}>
-                  <ShoppingCartCheckoutIcon style={{fontSize:'3rem'}}/> 
-                </Badge>
+               
+                <TemporaryDrawer/>
             </div>
         </div>
 
 
       </div>
+   
 
     </div>
   )
