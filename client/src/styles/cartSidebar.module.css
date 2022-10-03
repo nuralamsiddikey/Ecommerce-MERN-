@@ -1,7 +1,9 @@
+
 .wrapper{
     display: flex;
     flex-direction: row;
     padding: 2rem;
+    border-bottom: 1px solid rgb(240, 238, 238);
 }
 .wrapper img{
     width: 15rem;

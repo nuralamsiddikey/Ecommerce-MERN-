@@ -61,7 +61,7 @@ route.post('/login',async(req,res)=>{
                         existUser.password = ''
                             const token =   jwt.sign({
                              user : existUser
-                             }, process.env.JWT_SEC, { expiresIn: '2h' })
+                             }, process.env.JWT_SEC)
 
                              res.status(200).json({
                                 message:'Login success!',

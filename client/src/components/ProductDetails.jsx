@@ -41,39 +41,45 @@ const ProductDetails = () => {
               },
               body:JSON.stringify(obj)
           })
+         
           .then(response=>{
+           
                  if(response.status === 403){
                         navigate('/login')
                  }
                  else if(response.status === 409){
                     toast.info('This product already exist to cart!', {
                         position: "top-right",
-                        autoClose: 5000,
+                        autoClose: 1000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined,
                         });
+                     
                  }
                  else if (response.status === 201){
-                    toast.success('Successfully added to cart!', {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
+                      
+                        toast.success('Successfully added to cart!', {
+                           position: "top-right",
+                           autoClose: 5000,
+                           hideProgressBar: false,
+                           closeOnClick: true,
+                           pauseOnHover: true,
+                           draggable: true,
+                           progress: undefined,
+                           }); 
+                          
+                           window.location.reload('http://localhost:300')
+
+                    
                  }
               
-                
           })
+       
+          
  }
-
-
-
 
 
 
