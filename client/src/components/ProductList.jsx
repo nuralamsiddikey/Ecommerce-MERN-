@@ -20,12 +20,11 @@ const ProductList = () => {
           window.scrollTo(0, 0)
        })
       
+     
   },[])
 
 let allBrand = products.map(product=>product.brand)
 let uniqueBrand = Array.from(new Set(allBrand))
-
-
 
     return (
         <div className={style.container}>

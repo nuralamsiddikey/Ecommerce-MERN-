@@ -55,8 +55,8 @@ route.post('/login',async(req,res)=>{
                 const existUser = await userModel.findOne({email})
                
                 if(existUser){
-                    const originalPassword = CryptoJS.AES.decrypt(existUser.password, process.env.PASS_SEC).toString(CryptoJS.enc.Utf8)
-
+                   // const originalPassword = CryptoJS.AES.decrypt(existUser.password, process.env.PASS_SEC).toString(CryptoJS.enc.Utf8)
+const originalPassword = existUser.password
                     if(originalPassword === password){
                         existUser.password = ''
                             const token =   jwt.sign({

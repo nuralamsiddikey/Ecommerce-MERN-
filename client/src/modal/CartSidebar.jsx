@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 
 import styles from '../styles/cartSidebar.module.css'
 
-export default function TemporaryDrawer() {
+export  const TemporaryDrawer=()=> {
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -21,8 +21,11 @@ export default function TemporaryDrawer() {
     let [cartProduct, setCartProduct] = React.useState([])
     let token = localStorage.getItem('token')
     
- 
-       const getCart = ()=>{
+   useEffect(()=>{
+       getCart()
+   },[])
+  
+  const getCart = ()=>{
            if(token){
             fetch('http://localhost:4001/api/cart/get', {
                 headers: {
@@ -63,11 +66,16 @@ export default function TemporaryDrawer() {
                               Swal.fire(
                                     'Deleted!',
                                     'Your file has been deleted.',
-                                    'success'
+                                    'success',
+                                   
                                    )
                         }                   
                  })
-                 //.then(()=> window.location.reload('http://localhost:3000/'))
+                 .finally(()=>{
+                      setTimeout(() => {
+                        window.location.reload('http://localhost:3000/')
+                      }, 1000);
+                 })
          
 
            
@@ -124,7 +132,7 @@ export default function TemporaryDrawer() {
 
                     <Button onClick={toggleDrawer(anchor, true)}>
                         <Badge color="secondary" badgeContent={1000} max={9} style={{ marginLeft: '3rem' }}>
-                            <ShoppingCartCheckoutIcon style={{ fontSize: '3rem' }} onClick={getCart}/>
+                            <ShoppingCartCheckoutIcon style={{ fontSize: '3rem' }} />
                         </Badge>
                         <Badge color="secondary" badgeContent={1000} max={9} style={{ marginLeft: '3rem' }}>
                             <FavoriteBorderIcon style={{ fontSize: '3rem' }} />

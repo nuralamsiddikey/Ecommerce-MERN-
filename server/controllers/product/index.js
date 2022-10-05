@@ -6,22 +6,16 @@ const productModel = require('../../models/Product')
 //PRODUCT UPLOAD
 route.post('/upload',adminVerify,upload.single('image'),async(req,res)=>{
     try{
-        
-
+                
            const image = req.file.filename
-           const title  = req.body.title
-           const existingProduct = await productModel.findOne({title})
-
-           if(existingProduct){
-                res.status(409).json({message: `'${title}' is already exist`})
-           }
-
+         
+           
           const newProduct = await productModel.create({...req.body, image})
-
+ 
            res.status(201).json({
-            message:"successfully upload !",
-            data: newProduct,
-            error: false
+                message:"successfully upload !",
+                data: newProduct,
+                error: false
            })
     } 
     catch(err){

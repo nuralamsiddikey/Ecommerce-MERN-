@@ -6,7 +6,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
 import { ToastContainer, toast } from 'react-toastify';
-
 const queryString = require('query-string');
 
 
@@ -63,25 +62,25 @@ const ProductDetails = () => {
                       
                         toast.success('Successfully added to cart!', {
                            position: "top-right",
-                           autoClose: 5000,
+                           autoClose: 1000,
                            hideProgressBar: false,
                            closeOnClick: true,
                            pauseOnHover: true,
                            draggable: true,
                            progress: undefined,
                            }); 
-                          
-                           window.location.reload('http://localhost:300')
-
-                    
+                                         
                  }
               
           })
+          .finally(()=>{
+              setTimeout(() => {
+                  window.location.reload('http://localhost:300')
+              },1000);
+             })
        
           
  }
-
-
 
 
     return (

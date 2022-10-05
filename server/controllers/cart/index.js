@@ -1,5 +1,5 @@
 const router = require('express').Router()
-
+const productModel = require('../../models/Product')
 const cartModel = require('../../models/Cart')
 const {userVerify} = require('../../middlewares/verifyToken')
 const fetch = require('node-fetch')
@@ -61,25 +61,17 @@ router.get('/get',userVerify,async(req,res)=>{
           
            const userId = req.user.user._id
            const cart = await cartModel.find({userId})
-           const productId = cart[0].productId
-           let cartProduct = []
-     
-           for(let i=0; i<productId.length; i++){
-                 fetch(`http://localhost:4001/api/product/singleProduct/${productId[i]}`)
-                 .then(res=>res.json())
-                 .then(result=>{
-                      cartProduct.push(result.data)
-                      if(i== productId.length-1){
+           const productIdArray = cart[0].productId
+
+            const cartProduct = await productModel.find({_id: {$in:productIdArray}})
+              
                           res.json({
                                    message: 'Showing results',
-                                   length: productId.length,
+                                   length: cartProduct.length,
                                    data: cartProduct,
                                    error: false
                           })
-                      }
-                 })
-                
-           }
+       
           
  
      }

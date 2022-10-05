@@ -4,7 +4,9 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import TemporaryDrawer from '../modal/CartSidebar';
+import {TemporaryDrawer} from '../modal/CartSidebar';
+
+
 
 const Header = () => {
   return (
