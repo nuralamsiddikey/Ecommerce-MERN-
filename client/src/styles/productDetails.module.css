@@ -21,6 +21,7 @@
 .left img{
     height: 45rem;
     width: 40rem;
+    object-fit: contain;
 }
 
 .shop_button{

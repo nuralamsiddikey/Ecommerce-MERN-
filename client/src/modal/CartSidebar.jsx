@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React,{useContext} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -6,8 +6,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Swal from 'sweetalert2'
-
-
+import { CartContext } from '../App';
 import styles from '../styles/cartSidebar.module.css'
 
 export  const TemporaryDrawer=()=> {
@@ -17,34 +16,14 @@ export  const TemporaryDrawer=()=> {
         bottom: false,
         right: false,
     });
-
-    let [cartProduct, setCartProduct] = React.useState([])
-    let token = localStorage.getItem('token')
+    const {cartProduct, setCartProduct} = useContext(CartContext)
+   
     
-   useEffect(()=>{
-       getCart()
-   },[])
+   let token = localStorage.getItem('token')
+    
   
-  const getCart = ()=>{
-           if(token){
-            fetch('http://localhost:4001/api/cart/get', {
-                headers: {
-                    'token': `${token}`
-                }
-            })
-                .then(res => res.json())
-                .then(result => {
-                    setCartProduct( result.data)
-                       console.log(result.data)
-                })
-           }
-       }
- 
-  
-
-
   const removeProduct = (product_id)=>{
-     const id = product_id
+  const id = product_id
     Swal.fire({
             title: 'Are you sure?',
             text: "This product will not be availabe in cart!",
@@ -63,6 +42,13 @@ export  const TemporaryDrawer=()=> {
               })
                  .then(res=>{
                         if(res.status === 200){
+                             const newCart = cartProduct.filter(data=>{
+                                  if(data._id !== id){
+                                     return data
+                                  }
+                             })
+
+                             setCartProduct(newCart)
                               Swal.fire(
                                     'Deleted!',
                                     'Your file has been deleted.',
@@ -71,14 +57,7 @@ export  const TemporaryDrawer=()=> {
                                    )
                         }                   
                  })
-                 .finally(()=>{
-                      setTimeout(() => {
-                        window.location.reload('http://localhost:3000/')
-                      }, 1000);
-                 })
-         
-
-           
+                        
         }
       })
   }
@@ -103,7 +82,7 @@ export  const TemporaryDrawer=()=> {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <div className={styles.container}>
-                <p style={{textAlign:'center',backgroundColor:'#a29bfe',padding:'2rem 0', color:'white',fontSize:'2rem'}}>Total products: {cartProduct.length}</p>
+                <p style={{textAlign:'center',backgroundColor:'#a29bfe',padding:'2rem 0', color:'white',fontSize:'2rem'}}>Total products: {}</p>
                 
                 {cartProduct.map(product => (
                     <div className={styles.wrapper}>

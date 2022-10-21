@@ -1,16 +1,17 @@
-import React ,{useEffect}from 'react';
+import React ,{useEffect,useContext}from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import styles from '../styles/productDetails.module.css'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
+import { CartContext } from './../App';
 const queryString = require('query-string');
 
 
 const ProductDetails = () => {
-
+    const {cartProduct, setCartProduct} = useContext(CartContext)
     const [product, setProduct]   = useState([])
     const [quantity, setQuantity] = useState(1)
     const navigate = useNavigate()
@@ -59,27 +60,19 @@ const ProductDetails = () => {
                      
                  }
                  else if (response.status === 201){
-                      
+                  setCartProduct(cartProduct=> [...cartProduct, product])
                         toast.success('Successfully added to cart!', {
                            position: "top-right",
-                           autoClose: 1000,
+                           autoClose: 2000,
                            hideProgressBar: false,
                            closeOnClick: true,
                            pauseOnHover: true,
                            draggable: true,
                            progress: undefined,
-                           }); 
-                                         
+                           });                                        
                  }
               
-          })
-          .finally(()=>{
-              setTimeout(() => {
-                  window.location.reload('http://localhost:300')
-              },1000);
-             })
-       
-          
+          })        
  }
 
 

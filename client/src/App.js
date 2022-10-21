@@ -3,12 +3,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import React,{useEffect,createContext} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
 import TopHeader from "./components/TopHeader";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -18,11 +15,36 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ProductDetails from "./components/ProductDetails";
+ export const CartContext = createContext()
 
 
-function App() {
+ export const  App=()=> {
+  let [cartProduct, setCartProduct] = React.useState([])
+  let token = localStorage.getItem('token')
+
+  useEffect(()=>{
+    if(token){
+        fetch('http://localhost:4001/api/cart/get', {
+            headers: {
+                'token': `${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                setCartProduct( result.data)
+              
+            })
+    }
+},[])
+
+
+
+
+
+
   return (
-<BrowserRouter>
+    <CartContext.Provider value={{cartProduct,setCartProduct}}>
+         <BrowserRouter>
     <div>
           <TopHeader/>
            <Header/>
@@ -37,11 +59,12 @@ function App() {
         <Route  path="/productDetail" element={<ProductDetails/>}/>
     </Routes>
 
-    <Footer/> 
-    <ToastContainer />
-  </BrowserRouter>
+        <Footer/> 
+        <ToastContainer />
+      </BrowserRouter>
+    </CartContext.Provider>
 
   );
 }
 
-export default App;
+

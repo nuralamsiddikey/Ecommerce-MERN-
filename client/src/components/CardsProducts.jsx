@@ -14,8 +14,8 @@ const CardsProducts = (props) => {
     <div >
       <div class="ui link cards">
             <div class="card" onClick={() => navigate(`/productDetail?id=${product._id}`)} style={{ width: '24rem', boxShadow: 'none', height: '50rem' }}>
-                  <div class="image" style={{height:'55%',marginBottom:'10%'}}>
-                            <img src={`http://localhost:4001/${product.image}`} alt="" style={{height:'100%',objectFit:'cover'}}/>
+                  <div class="image" style={{height:'55%',paddingBottom:'10%',background:'none'}}>
+                            <img src={`http://localhost:4001/${product.image}`} alt="" style={{height:'100%',objectFit:'contain'}}/>
                   </div>
 
                   <div class="content" style={{height:'40%'}}>

@@ -1,35 +1,24 @@
 import React from 'react'
 import style from '../styles/navbar.module.css'
 
-
 import { Link,NavLink } from 'react-router-dom'
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useNavigate } from 'react-router-dom';
  
 const Navbar = () => {
-  let navigate = useNavigate(); 
+const navigate = useNavigate(); 
 
-  const handleClick = value=> () => {
-     
-         
-          navigate(`/productList?type=${value}`)
-          window.location.reload('http://localhost:3000')
-         
-      
-  }
-
-
+ 
   return (
     <div className={style.container}>
         <div className={style.wrapper}>        
              <nav>
                 <ul>
                     <li style={{position:'relative'}}>
-                       <NavLink to="#" >
+                       <div >
                        
-                       <div style={{display:'flex',flexDirection:'row'}}>
+                       <div style={{display:'flex',flexDirection:'row',color:'white'}} >
                          <ListOutlinedIcon style={{fontSize:'2.7rem',marginRight:'1rem'}}/>
                             ALLCATEGORY 
                          <ExpandMoreOutlinedIcon style={{fontSize:'2.7rem',marginLeft:'1rem'}}/>
@@ -39,60 +28,52 @@ const Navbar = () => {
                             background:'#fff',
                             position:'absolute',
                             marginTop:'1.5rem',
-                            width:'20rem',
                             zIndex:3,
                            
          
                             }}>
-                                
-                           <div className={style.subItem} onClick={handleClick('womenDress')}>
-                               <NavLink  className={style.menu} to="#" style={{color:'black'}}>FASHIONS</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                           <div className={style.subItem}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>KIDS TOYS</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-  
-                           <div className={style.subItem} onClick={handleClick}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>CLOTHES</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                           <div className={`${style.subItem} ${style.electronic}`}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>ELECTRONICS
-                               <div className={style.sub_menu}>
-                                 <NavLink to="#" style={{color:'black'}}>Mobile</NavLink>
-                                 <NavLink onClick={handleClick('laptop')} to="#" style={{color:'black'}}>Laptop</NavLink>
-                                 <NavLink to="#" style={{color:'black'}}>Television</NavLink>
-                                 <NavLink to="#" style={{color:'black'}}>Watch</NavLink>
-                                  
-                                 </div>
-                               
-                               
-                               </NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                                
-                           </div>
-                           <div className={style.subItem}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>ELECTRONICS AND ACCESSORIES</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                           <div className={style.subItem}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>BOOK'S GALLERY</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                           <div className={style.subItem}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>DAILY NEEDS</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                           <div className={style.subItem}>
-                               <NavLink className={style.menu} to="#" style={{color:'black'}}>BIKE'S AND CARS</NavLink>
-                               <KeyboardArrowRightIcon style={{color:'black'}}/>
-                           </div>
-                         
-                       
+                                <div className={style.subMenu}>
+                                    <div>
+                                       <h2>Electronics</h2>
+                                        <p>Television</p>
+                                        <p onClick={()=>navigate('/productList?type=laptop')}>Laptop</p>
+                                        <p>Phone</p>
+                                        <p>Freeze</p>
+                                        <p>Watch</p>
+                                        <p>Monitor</p>
+
+                                    </div>
+                                    <div>
+                                    <h2>Fashions</h2>
+                                        <p onClick={()=>navigate('/productList?type=womenDress')}>Womens dress</p>
+                                        <p>Ladies Bag</p>
+                                        <p>Phone</p>
+                                        <p>Freeze</p>
+                                        <p>Watch</p>
+                                        <p>Monitor</p>
+                                    </div>
+                                    <div>
+                                    <h2>Home & Living</h2>
+                                        <p>Television</p>
+                                        <p>Laptop</p>
+                                        <p>Phone</p>
+                                        <p>Freeze</p>
+                                        <p>Watch</p>
+                                        <p>Monitor</p>
+                                    </div>
+                                    <div>
+                                    <h2>Bikes & Cars</h2>
+                                        <p>Television</p>
+                                        <p>Laptop</p>
+                                        <p>Phone</p>
+                                        <p>Freeze</p>
+                                        <p>Watch</p>
+                                        <p>Monitor</p>
+                                    </div>
+                                </div>
+                                       
                          </div>
-                       </NavLink>
+                       </div>
                     </li>
                     <li>
                        <Link to="#">HOME</Link>
@@ -109,7 +90,7 @@ const Navbar = () => {
                     <li>
                        <Link to="#">PAGES</Link>
                     </li>
-                    <h1 style={{color:'white'}} onClick={handleClick}>Click</h1>
+                   
                 </ul>
              </nav>
         </div>
