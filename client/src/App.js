@@ -19,10 +19,20 @@ import ProductDetails from "./components/ProductDetails";
 
 
  export const  App=()=> {
-  let [cartProduct, setCartProduct] = React.useState([])
-  let token = localStorage.getItem('token')
+  const [products, setProducts] = React.useState([])
+  const [filteredProducts, setFilteredProducts] = React.useState([])
+  let   [cartProduct, setCartProduct] = React.useState([])
+  let   token = localStorage.getItem('token')
 
   useEffect(()=>{
+    fetch(`http://localhost:4001/api/product/allProducts/`)
+    .then(res=>res.json())
+    .then(data=>{
+         setProducts(data.data)     
+    })
+
+
+
     if(token){
         fetch('http://localhost:4001/api/cart/get', {
             headers: {
@@ -40,10 +50,8 @@ import ProductDetails from "./components/ProductDetails";
 
 
 
-
-
   return (
-    <CartContext.Provider value={{cartProduct,setCartProduct}}>
+    <CartContext.Provider value={{cartProduct,products,filteredProducts,setFilteredProducts,setProducts,setCartProduct}}>
          <BrowserRouter>
     <div>
           <TopHeader/>

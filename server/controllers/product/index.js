@@ -87,11 +87,11 @@ route.get('/singleProduct/:id',async(req,res)=>{
 })
 
 
-//find product by type
+//FINAL ALL PRODUCTS
  route.get('/allProducts',async(req,res)=>{
     try{
-          const {type} = req.query
-          const products = await productModel.find({type:type})
+         
+          const products = await productModel.find({})
 
           res.status(200).json({
                 message: 'showing results',

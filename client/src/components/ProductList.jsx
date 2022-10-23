@@ -1,29 +1,21 @@
 import React from 'react';
 import style from '../styles/ProductList.module.css'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState ,useContext} from 'react';
 import { useLocation } from 'react-router-dom';
 import Slider from '@mui/material/Slider';
 import CardsProducts from './CardsProducts';
+import { CartContext } from '../App';
 const queryString = require('query-string');
 
+
 const ProductList = () => {
-  const [products, setProducts] = useState([])
+  const [product, setProduct] = useState([])
   const {search} = useLocation() 
   const parsed = queryString.parse(search);
+  const {filteredProducts} = useContext(CartContext)
 
-  useEffect(()=>{
-       fetch(`http://localhost:4001/api/product/allProducts/?type=${parsed.type}`)
-       .then(res=>res.json())
-       .then(data=>{
-          setProducts(data.data)
-          window.scrollTo(0, 0)
-       })
-      
-     
-  },[])
 
-let allBrand = products.map(product=>product.brand)
+let allBrand = filteredProducts.map(product=>product.brand)
 let uniqueBrand = Array.from(new Set(allBrand))
 
     return (
@@ -63,7 +55,7 @@ let uniqueBrand = Array.from(new Set(allBrand))
                 </div>
 
                 <div className={style.right}>
-                  {products.map(product=><CardsProducts data={product}/>)}
+                  {filteredProducts.map(product=><CardsProducts data={product}/>)}
             
       
 

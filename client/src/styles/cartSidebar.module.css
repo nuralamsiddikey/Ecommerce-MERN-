@@ -1,17 +1,26 @@
-
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: row;
     padding: 2rem;
     border-bottom: 1px solid rgb(240, 238, 238);
 }
-.wrapper img{
+
+.wrapper img {
     width: 15rem;
 }
-.left{
-    flex: 2
+
+.left {
+    flex: 2;
+  
 }
-.right{
+
+.left img{
+    height: 14rem;
+    width: 13rem;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+.right {
     flex: 4;
-    padding-top:2rem
+    padding-top: 2rem
 }

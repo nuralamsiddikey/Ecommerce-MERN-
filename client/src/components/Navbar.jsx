@@ -1,14 +1,25 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import style from '../styles/navbar.module.css'
 
 import { Link,NavLink } from 'react-router-dom'
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { useNavigate } from 'react-router-dom';
- 
+
+import { CartContext } from './../App';
 const Navbar = () => {
 const navigate = useNavigate(); 
+const {products,setFilteredProducts}  = useContext(CartContext)
 
+ const handleProductType = (type)=>{
+        const filteredProducts = products.filter(data=>{
+               if(data.type === type){
+                  return data
+               }
+        })
+        setFilteredProducts(filteredProducts)
+        navigate('/productList')
+ }
  
   return (
     <div className={style.container}>
@@ -36,7 +47,7 @@ const navigate = useNavigate();
                                     <div>
                                        <h2>Electronics</h2>
                                         <p>Television</p>
-                                        <p onClick={()=>navigate('/productList?type=laptop')}>Laptop</p>
+                                        <p onClick={()=>handleProductType('laptop')}>Laptop</p>
                                         <p>Phone</p>
                                         <p>Freeze</p>
                                         <p>Watch</p>
@@ -45,7 +56,7 @@ const navigate = useNavigate();
                                     </div>
                                     <div>
                                     <h2>Fashions</h2>
-                                        <p onClick={()=>navigate('/productList?type=womenDress')}>Womens dress</p>
+                                        <p onClick={()=>handleProductType('womenDress')}>Womens dress</p>
                                         <p>Ladies Bag</p>
                                         <p>Phone</p>
                                         <p>Freeze</p>

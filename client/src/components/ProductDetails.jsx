@@ -17,15 +17,16 @@ const ProductDetails = () => {
     const navigate = useNavigate()
     const {search} = useLocation()
     const {id} = queryString.parse(search)
-    
-   useEffect(()=>{
+
+
+   // useEffect(()=>{
      fetch(`http://localhost:4001/api/product/singleProduct/${id}`)
         .then(res=>res.json())
         .then(data=>{
                 setProduct(data.data)
         })
      window.scrollTo(0, 0)
-   },[])
+   // },[])
  
 
  const handleAddToCart = ()=>{
